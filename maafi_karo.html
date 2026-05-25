@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafi Karo Yaar 🥺</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Noto+Sans+Devanagari:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --pink: #ff6b9d;
+            --purple: #c084fc;
+            --yellow: #fde68a;
+            --orange: #fb923c;
+            --red: #f87171;
+            --bg: #1a0a2e;
+            --card: #2d1052;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 30px 20px 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0 20px;
+            animation: fadeDown 1s ease;
+        }
+        
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .emoji-big {
+            font-size: 80px;
+            display: block;
+            animation: bounce 1.5s infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8));
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b9d, #c084fc, #fde68a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(192, 132, 252, 1));
+            }
+        }
+        
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #c084fc;
+            font-style: italic;
+            animation: fadeIn 2s ease 0.5s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 30px;
+            margin: 25px 0;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.8s ease both;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #ff6b9d33, #c084fc33, #fde68a33);
+            border-radius: 26px;
+            z-index: -1;
+            animation: rotateBorder 4s linear infinite;
+        }
+        
+        @keyframes rotateBorder {
+            from {
+                filter: hue-rotate(0deg);
+            }
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
+        
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            animation: wiggle 2s infinite;
+        }
+        
+        @keyframes wiggle {
+            0%,
+            100% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(-10deg);
+            }
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--pink);
+        }
+        
+        .card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #e2d9f3;
+        }
+        
+        .highlight {
+            color: var(--yellow);
+            font-weight: 600;
+        }
+        
+        .pink-text {
+            color: var(--pink);
+            font-weight: 600;
+        }
+        
+        .purple-text {
+            color: var(--purple);
+            font-weight: 600;
+        }
+        
+        .reason-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+        
+        .reason-list li {
+            padding: 10px 14px;
+            margin: 8px 0;
+            background: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+            color: #e2d9f3;
+            animation: fadeInLeft 0.5s ease both;
+        }
+        
+        .reason-list li:nth-child(1) {
+            animation-delay: 1s;
+        }
+        
+        .reason-list li:nth-child(2) {
+            animation-delay: 1.2s;
+        }
+        
+        .reason-list li:nth-child(3) {
+            animation-delay: 1.4s;
+        }
+        
+        .reason-list li:nth-child(4) {
+            animation-delay: 1.6s;
+        }
+        
+        .reason-list li:nth-child(5) {
+            animation-delay: 1.8s;
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .funny-box {
+            background: linear-gradient(135deg, rgba(253, 230, 138, 0.15), rgba(251, 146, 60, 0.15));
+            border: 1px dashed var(--yellow);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+        }
+        
+        .funny-box p {
+            font-size: 0.95rem;
+            color: var(--yellow);
+            font-style: italic;
+        }
+        
+        .promise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        
+        @media (max-width: 500px) {
+            .promise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .promise-item {
+            background: rgba(192, 132, 252, 0.12);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 14px;
+            padding: 14px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #e2d9f3;
+            transition: transform 0.3s;
+        }
+        
+        .promise-item:hover {
+            transform: scale(1.05);
+            background: rgba(192, 132, 252, 0.25);
+        }
+        
+        .promise-item .picon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        .forgive-section {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 1s ease 2s both;
+        }
+        
+        .forgive-section h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--pink);
+            margin-bottom: 12px;
+        }
+        
+        .forgive-section p {
+            color: #c084fc;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+        
+        .btn-forgive {
+            background: linear-gradient(135deg, #ff6b9d, #c084fc);
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 16px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+            animation: glow 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-forgive::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-20deg);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            from {
+                left: -60%;
+            }
+            to {
+                left: 120%;
+            }
+        }
+        
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255, 107, 157, 0.9), 0 0 60px rgba(192, 132, 252, 0.5);
+            }
+        }
+        
+        .btn-forgive:hover {
+            transform: scale(1.08) translateY(-3px);
+        }
+        
+        .btn-no {
+            display: inline-block;
+            margin-top: 16px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        #response-msg {
+            margin-top: 24px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--yellow);
+            display: none;
+            animation: popIn 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0) rotate(-5deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.2) rotate(3deg);
+            }
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+        
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            animation: confettiFall 3s ease forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                top: -10px;
+                opacity: 1;
+                transform: rotate(0) translateX(0);
+            }
+            100% {
+                top: 105vh;
+                opacity: 0;
+                transform: rotate(720deg) translateX(var(--drift));
+            }
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--pink);
+            animation: typing 3s steps(40, end), blink 0.8s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        @keyframes blink {
+            from,
+            to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: var(--pink);
+            }
+        }
+        
+        .heart-float {
+            position: fixed;
+            font-size: 1.5rem;
+            animation: floatUp 4s ease forwards;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                bottom: -30px;
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+            100% {
+                bottom: 110vh;
+                opacity: 0;
+                transform: translateX(var(--sway)) scale(0.5);
+            }
+        }
+        
+        .shake-no {
+            animation: shakeno 0.5s ease;
+        }
+        
+        @keyframes shakeno {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            20% {
+                transform: translateX(-10px) rotate(-2deg);
+            }
+            40% {
+                transform: translateX(10px) rotate(2deg);
+            }
+            60% {
+                transform: translateX(-8px);
+            }
+            80% {
+                transform: translateX(8px);
+            }
+        }
+        
+        .footer-quote {
+            text-align: center;
+            color: rgba(192, 132, 252, 0.5);
+            font-size: 0.85rem;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--pink), var(--purple), transparent);
+            margin: 10px 0;
+            border-radius: 2px;
+        }
+        
+        .ticket {
+            background: rgba(255, 107, 157, 0.08);
+            border: 2px dashed rgba(255, 107, 157, 0.4);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin: 14px 0;
+            position: relative;
+        }
+        
+        .ticket::before,
+        .ticket::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--bg);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .ticket::before {
+            left: -13px;
+        }
+        
+        .ticket::after {
+            right: -13px;
+        }
+        
+        .blink-text {
+            animation: blink 1s step-end infinite;
+            color: var(--yellow);
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars" id="stars"></div>
+    <div class="confetti-container" id="confetti"></div>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="hero">
+            <span class="emoji-big">🥺</span>
+            <h1>Maafi Chahiye Yaar!</h1>
+            <p class="subtitle">A very official, very dramatic, totally genuine apology 💜</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- CARD 1: The Crime Report -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🚨</span>
+                <div class="card-title">Kya Hua Tha Last Night — Official Report</div>
+            </div>
+            <p>
+                Toh baat yeh hai ki... <span class="highlight">haan, maine galti ki.</span> Pura sach yeh hai ki main ek <span class="pink-text">certified idiot</span> hoon jo kabhi kabhi apne muh ko brain se connect karna bhool jaata hoon. 🧠❌
+            </p>
+            <div class="funny-box">
+                <p>🎭 "Ek taraf mera dil bol raha tha — ruk, mat bol yeh. Doosri taraf mera muh bolta raha — aur tab scene ho gaya." 🎭</p>
+            </div>
+            <p>
+                Fight hoti hai, hota hai — but <span class="highlight">tujhse fight karna</span> mujhe
+                <span class="pink-text">raat bhar chain nahi aaya.</span> Tu meri didi hai, blood se nahi but <span class="purple-text">dil se pakka.</span> Aur dil waali bond toh khoon se bhi zyada strong hoti hai, right? 💪
+            </p>
+        </div>
+
+        <!-- CARD 2: Meri Galtiyan -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">📋</span>
+                <div class="card-title">Meri Official List of Galtiyan</div>
+            </div>
+            <p>Court mein petition file kar raha hoon — with full transparency:</p>
+            <ul class="reason-list">
+                <li>🗣️ Woh baat bol di jo bilkul nahi bolni chahiye thi .</li>
+                <li>🙉 Tujhe sunne ki jagah apna point prove karne mein laga tha main.</li>
+                <li>😤 Ego ne brain ko temporarily disable kar diya tha aur warranty period mein complaint daalenge.</li>
+
+                <li>💔 Teri feelings ko hurt kiya yeh sabse badi galti hai, aur iske liye genuinely sorry hoon.</li>
+            </ul>
+        </div>
+
+        <!-- CARD 3: The Defence + Funny -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">⚖️</span>
+                <div class="card-title">Meri Defence (Jo Bahut Weak Hai, Main Jaanta Hoon)</div>
+            </div>
+            <p>
+                Okay so technically...
+                <span class="blink-text">MAIN GALAT THA.</span> Period. Full stop. Done. No debate.
+            </p>
+
+            <div class="ticket">
+                <p style="font-size:0.9rem; color:#e2d9f3;">
+                    🎟️ <strong style="color:var(--yellow)">OFFICIAL APOLOGY TICKET #001</strong><br><br> Yeh certify karta/karti hoon ki — <span class="pink-text">main puri tarah se wrong tha/thi,</span> tum puri tarah se right thi/the, aur universe
+                    ke saamne main yeh admit karta/karti hoon. Ye ticket ek free "I told you so" ke saath aata hai — use it wisely. 🪄
+                </p>
+            </div>
+
+            <div class="funny-box">
+                <p>🤡 "Agar meri galtiyan collect karun toh ek full Netflix series ban jaaye — <em>'Beta, Kyun?'</em> — 7 seasons, no cancellation." 🤡</p>
+            </div>
+        </div>
+
+        <!-- CARD 4: Why You're the Best -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">👑</span>
+                <div class="card-title">Tu Kyun Best Hai — Factual Evidence</div>
+            </div>
+            <p>Blood relation nahi hai humara, but yeh cheezein sirf sachchi behen hi karti hai:</p>
+            <div class="promise-grid">
+                <div class="promise-item">
+                    <span class="picon">🍕</span> Meri buri choices support karti hai (food + life dono mein)
+                </div>
+                <div class="promise-item">
+                    <span class="picon">🛡️</span> Duniya se bachati hai — except khud se nahi
+                </div>
+                <div class="promise-item">
+                    <span class="picon">🤣</span> Meri stupidest jokes pe genuinely hasti hai
+                </div>
+                <div class="promise-item">
+                    <span class="picon">💬</span> 3 baje bhi available hai meri bakwaas sunne ke liye
+                </div>
+                <div class="promise-item">
+                    <span class="picon">🪞</span> Sach bolti hai jab sab ache ache bolte hain
+                </div>
+                <div class="promise-item">
+                    <span class="picon">❤️</span> Bina blood ke bhi family feel karati hai
+                </div>
+            </div>
+            <div class="funny-box" style="margin-top:16px;">
+                <p>💡 "Tu meri chosen family hai , aur main apni choice pe proud hoon. Teri problem yeh hai ki mujhe uninstall nahi kar sakti." 😂</p>
+            </div>
+        </div>
+
+        <!-- CARD 5: Promises -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🤝</span>
+                <div class="card-title">Aage Se Meri Kasam </div>
+            </div>
+            <p>Yeh promises main apne momos aur ice cream ki kasam kha ke de raha hoon:</p>
+            <ul class="reason-list">
+                <li>🤐 Pehle sochunga, phir bolunga — concept naya hai mere liye, practice karunga.</li>
+                <li>👂 Teri baat sununga — actually sununga, not just "head nodding while planning my reply".</li>
+                <li>🙅 Next fight mein ego ghar pe rehega — main akela aaunga.</li>
+                <li>🍦 Extra ice cream dene ka haq hamesha tera rahega — yeh permanent clause hai.</li>
+            </ul>
+        </div>
+
+        <!-- FORGIVE SECTION -->
+        <div class="forgive-section">
+            <h2>Ab Forgive Kar De? 🥺👉👈</h2>
+            <p>Ek button press kar, duniya mein aman aayega 🌈</p>
+            <br>
+            <form action="https://api.web3forms.com/submit" method="POST">
+
+                <!-- Replace with your Access Key -->
+                <input type="hidden" name="access_key" value="74136384-973c-4482-baae-b67f2ca994c5">
+                <button class="btn-forgive" type="submit" name="forgiven" onclick="forgiven()">
+                    💜 Haan, Maaf Kiya! 💜
+                    </button>
+                <br>
+                <button class="btn-no" id="noBtn" type="submit" name="not forgiven" onclick="noClick()">
+      Abhi Nahi, Sochke btati...
+    </button>
+                <div id="response-msg"></div>
+        </div>
+
+    </div>
+
+    <p class="footer-quote">Made with 💜, tears, and 3am regret &nbsp;•&nbsp; Koi blood relation nahi but dil ka taar pakka juda hai 🫶</p>
+
+    <script>
+        const starsEl = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            const size = Math.random() * 3 + 1;
+            s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${Math.random()*2+1.5}s`;
+            starsEl.appendChild(s);
+        }
+
+        function spawnHearts() {
+            setInterval(() => {
+                const h = document.createElement('div');
+                h.className = 'heart-float';
+                h.textContent = ['💜', '💗', '💖', '💝', '🩷'][Math.floor(Math.random() * 5)];
+                h.style.left = Math.random() * 100 + 'vw';
+                h.style.setProperty('--sway', (Math.random() * 100 - 50) + 'px');
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 4000);
+            }, 800);
+        }
+        spawnHearts();
+
+        function launchConfetti() {
+            const colors = ['#ff6b9d', '#c084fc', '#fde68a', '#fb923c', '#67e8f9', '#86efac'];
+            const container = document.getElementById('confetti');
+            for (let i = 0; i < 120; i++) {
+                setTimeout(() => {
+                    const c = document.createElement('div');
+                    c.className = 'confetti-piece';
+                    c.style.cssText = `
+          left: ${Math.random()*100}vw;
+          background: ${colors[Math.floor(Math.random()*colors.length)]};
+          width: ${Math.random()*10+6}px;
+          height: ${Math.random()*10+6}px;
+          border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+          animation-duration: ${Math.random()*2+2}s;
+          animation-delay: ${Math.random()*0.5}s;
+          --drift: ${(Math.random()*200-100)}px;
+        `;
+                    container.appendChild(c);
+                    setTimeout(() => c.remove(), 4000);
+                }, i * 30);
+            }
+        }
+
+        const messages = [
+            "YAAAAY! 🎉 Behen ka pyaar zindabad! Dil garden garden ho gaya! 🌸",
+            "💜 AWWW! Tu best hai! Ice cream treat pakki hai aaj! 🍦",
+            "🥳 Finally! Main ro bhi rahi/raha hoon aur hans bhi raha/rahi hoon!",
+            "🌈 Tujhe maafi dene ka award milna chahiye! Tu hero hai meri!",
+            "🫶 Ek hug chahiye abhi IMMEDIATELY! Virtual nahi, real wala!"
+        ];
+
+        function forgiven() {
+            launchConfetti();
+            const msg = document.getElementById('response-msg');
+            msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+            msg.style.display = 'block';
+            document.querySelector('.btn-forgive').textContent = '🎊 Thank you thank you thank you! 🎊';
+            document.querySelector('.btn-forgive').style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            document.getElementById('noBtn').style.display = 'none';
+        }
+
+        let noCount = 0;
+        const noResponses = [
+            "Theek hai... main wait karunga 🥺",
+            "Okay okay... still waiting... 👀",
+            "Tera dil bahut pathar ka hai yaar 😭",
+            "Main yahan hoon... button dobara check kar... 🥹",
+            "Chalo, pizza mangwata hoon — phir soch 🍕",
+            "PLEASE 🙏🙏🙏",
+            "Okay ab main genuinely ro raha hoon 😭💧",
+            "behen... ek baar aur try kar... upper wala pink button 💜"
+        ];
+
+        function noClick() {
+            const btn = document.getElementById('noBtn');
+            btn.textContent = noResponses[noCount % noResponses.length];
+            btn.classList.add('shake-no');
+            btn.style.color = `hsl(${noCount * 40}, 80%, 70%)`;
+            btn.style.borderColor = `hsl(${noCount * 40}, 80%, 50%)`;
+            setTimeout(() => btn.classList.remove('shake-no'), 500);
+
+            if (noCount >= 5) {
+                const msg = document.getElementById('response-msg');
+                msg.textContent = "😂 OKAY OKAY main samajh gaya/gayi — abhi thodi der aur sulk kar, main hoon na yahan! 💜";
+                msg.style.display = 'block';
+                msg.style.fontSize = '1rem';
+            }
+            noCount++;
+        }
+    </script>
+</body>
+
+</html>
